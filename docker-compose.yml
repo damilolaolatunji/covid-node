@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  web:
+    image: covid
+    ports:
+      - "4000:4000"
+    deploy:
+      resources:
+        limits:
+          memory: 50M
+    environment:
+      NODE_ENV: production

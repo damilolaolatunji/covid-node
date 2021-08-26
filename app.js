@@ -26,7 +26,7 @@ fastify.get('/covid', async function (req, res) {
   }
 });
 
-fastify.listen(4000, function (err, address) {
+fastify.listen(4000, '0.0.0.0', (err, address) => {
   if (err) {
     fastify.log.error(err);
     process.exit(1);
