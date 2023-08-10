@@ -1,8 +1,9 @@
-const fastify = require('fastify')({
-  logger: true,
-});
-const got = require('got');
-const NodeCache = require('node-cache');
+import Fastify from 'fastify'
+const fastify = Fastify({
+  logger: true
+})
+import got from 'got';
+import NodeCache from 'node-cache';
 
 const appCache = new NodeCache();
 
@@ -26,10 +27,10 @@ fastify.get('/covid', async function (req, res) {
   }
 });
 
-fastify.listen(4000, '0.0.0.0', (err, address) => {
+fastify.listen({ port: 4000, host: '0.0.0.0' }, (err, address) => {
   if (err) {
-    fastify.log.error(err);
-    process.exit(1);
+    fastify.log.error(err)
+    process.exit(1)
   }
 
   fastify.log.info(`server listening on ${address}`);
